@@ -1,0 +1,56 @@
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+double Sum_Rahunok, kurs1, kurs2, saldo, borg$, borg, oplata, konv;
+string pokupatel;
+
+int main()
+{
+	cout << "Vvedite nazvanie Pokupatela:\n";
+	getline(cin, pokupatel);
+    cout << "Vvedite summu scheta\n";
+	cin >> Sum_Rahunok;
+	cout << "Vvedite kurs\n";
+	cin >> kurs1;
+	borg = Sum_Rahunok;
+	borg$ = borg / kurs1;
+	cout << "Dolg po schetu\t" << pokupatel << " =" << borg << endl;
+	cout << "Summa otgruzki\t" << pokupatel << ", $ =" << borg$ << endl;
+
+	cout << "Vvedite summu oplaty\n";
+	cin >> oplata;
+	cout << "Vvedite kurs\n";
+	cin >> kurs2;
+	konv = oplata / kurs2;
+	cout << "Prokonvertovano =" << konv << endl;
+	borg = borg - oplata;
+	saldo = borg$ - konv;
+	cout << "Dolg po schetu =" << borg << endl;
+	cout << "Saldo\t" << pokupatel << " =\t" << saldo << endl;
+
+	if (borg>0)
+	{
+		do
+		{
+			cout << "Vvedite summu oplaty\n";
+			cin >> oplata;
+			cout << "Vvedite kurs\n";
+			cin >> kurs2;
+			konv = oplata / kurs2;
+			cout << "Prokonvertovano =" << konv << endl;
+			borg = borg - oplata;
+			saldo = saldo - konv;
+			cout << "Dolg po schetu =" << borg << endl;
+			cout << "Saldo \t" << pokupatel << " =\t" << saldo << endl;
+		} while (borg > 0);
+	}
+	else
+	{
+			cout << "Dolg oplachen 100%" << endl;
+	}
+
+
+	return 0;
+}
