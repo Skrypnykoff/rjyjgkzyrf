@@ -6,51 +6,85 @@ using namespace std;
 double Sum_Rahunok, kurs1, kurs2, saldo, borg$, borg, oplata, konv;
 string pokupatel;
 
-int main()
+
+double Saldo()
 {
-	cout << "Vvedite nazvanie Pokupatela:\n";
-	getline(cin, pokupatel);
-    cout << "Vvedite summu scheta\n";
-	cin >> Sum_Rahunok;
-	cout << "Vvedite kurs\n";
-	cin >> kurs1;
-	borg = Sum_Rahunok;
-	borg$ = borg / kurs1;
-	cout << "Dolg po schetu\t" << pokupatel << " =" << borg << endl;
-	cout << "Summa otgruzki\t" << pokupatel << ", $ =" << borg$ << endl;
+		cout << "Vvedite nazvanie Pokupatela:\n";
+		getline(cin, pokupatel);
+		cout << "Vvedite summu scheta\n";
+		cin >> Sum_Rahunok;
+		cout << "Vvedite kurs\n";
+		cin >> kurs1;
+		borg = Sum_Rahunok;
+		borg$ = borg / kurs1;
+		cout << "Dolg po schetu\t" << pokupatel << " =" << borg << endl;
+		cout << "Summa otgruzki\t" << pokupatel << ", $ =" << borg$ << endl;
 
-	cout << "Vvedite summu oplaty\n";
-	cin >> oplata;
-	cout << "Vvedite kurs\n";
-	cin >> kurs2;
-	konv = oplata / kurs2;
-	cout << "Prokonvertovano =" << konv << endl;
-	borg = borg - oplata;
-	saldo = borg$ - konv;
-	cout << "Dolg po schetu =" << borg << endl;
-	cout << "Saldo\t" << pokupatel << " =\t" << saldo << endl;
+		cout << "Vvedite summu oplaty\n";
+		cin >> oplata;
+		cout << "Vvedite kurs\n";
+		cin >> kurs2;
+		konv = oplata / kurs2;
+		cout << "Prokonvertovano =" << konv << endl;
+		borg = borg - oplata;
+		saldo = borg$ - konv;
+		cout << "Dolg po schetu\t" << pokupatel << "=\t" << borg << endl;
+		cout << "Saldo\t" << pokupatel << " =\t" << saldo << endl;
 
-	if (borg>0)
-	{
-		do
+		if (borg > 0)
 		{
-			cout << "Vvedite summu oplaty\n";
-			cin >> oplata;
-			cout << "Vvedite kurs\n";
-			cin >> kurs2;
-			konv = oplata / kurs2;
-			cout << "Prokonvertovano =" << konv << endl;
-			borg = borg - oplata;
-			saldo = saldo - konv;
-			cout << "Dolg po schetu =" << borg << endl;
-			cout << "Saldo \t" << pokupatel << " =\t" << saldo << endl;
-		} while (borg > 0);
-	}
-	else
-	{
+			do
+			{
+				cout << "Vvedite summu oplaty\n";
+				cin >> oplata;
+				cout << "Vvedite kurs\n";
+				cin >> kurs2;
+				konv = oplata / kurs2;
+				cout << "Prokonvertovano =" << konv << endl;
+				borg = borg - oplata;
+				saldo = saldo - konv;
+				cout << "Dolg po schetu\t" << pokupatel << "=\t" << borg << endl;
+				cout << "Saldo \t" << pokupatel << " =\t" << saldo << endl;
+			} while (borg > 0);
+		}
+		else
+		{
 			cout << "Dolg oplachen 100%" << endl;
-	}
+		}
 
 
-	return 0;
+		return saldo;
 }
+
+
+		int main()
+		{
+			int year = 2019;
+			int nomer, b;
+			string month;
+			double a;
+	
+			Saldo();
+
+			cout << "Vvedite nomer sheta" << endl;
+			cin >> nomer;
+			cout << "Vvedite mesyatc" << endl;
+			cin >> month;
+
+			a = saldo;
+
+			cout << "\n" << endl;
+			cout  << "Saldo po schetu nomer " << nomer << " = " << a << endl;
+
+			cout << "\n" << endl;
+			/*cout << "Next order in this Month? Yes - 1, No - 2" << endl;
+			cin >> b;*/
+			
+				cout << "\n" << endl;
+				cout << month << " " << year << " ITOGO " << a << endl;
+			
+
+			
+
+			system("pause");
+		}
