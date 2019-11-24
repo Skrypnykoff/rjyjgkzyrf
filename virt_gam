@@ -12,23 +12,25 @@ class Customers
 public:
 	double Sum_Rahunok, kurs1, kurs2, saldo, borg$, borg, oplata, konv, number;
 	string pokupatel;
-	double a;
+	double a, c;
 
 	int year, b;
 	string month;
 
-	void Saldo();
+	void Saldo_1();
+	void Saldo_2();
+	void Saldo_3();
 
-	Customers( )
+	Customers()
 	{
-	
+
 	}
 
 private:
-	
+
 };
 
-void Customers::Saldo()
+void Customers::Saldo_1()
 {
 	cout << "Vvedite summu scheta\n";
 	cin >> Sum_Rahunok;
@@ -38,7 +40,7 @@ void Customers::Saldo()
 	cin >> kurs1;
 	borg = Sum_Rahunok;
 	borg$ = borg / kurs1;
-	cout << "Dolg po schetu\t" <<number << "  " << pokupatel << " =" << borg << endl;
+	cout << "Dolg po schetu\t" << number << "  " << pokupatel << " =" << borg << endl;
 	cout << "Summa otgruzki\t" << pokupatel << ", $ =" << borg$ << endl;
 
 	cout << "Vvedite summu oplaty\n";
@@ -78,36 +80,45 @@ void Customers::Saldo()
 
 	cout << "Saldo po schetu nomer " << number << " = " << a << endl;
 	cout << "\n" << endl;
+}
 
+void Customers::Saldo_2()
+{
+	c = a;
 	for (;;)
 	{
 		cout << "Next order in this Month? Yes - 1, No - 2" << endl;
 		cin >> b;
 		if (b == 1)
 		{
-			Saldo();
-			a = a + saldo;
+			Saldo_1();
+			c = c + a;
 		}
 		else
 		{
+			cout << "\n" << endl;
+			cout << month << " " << year << " ITOGO " << c << endl;
 			break;
 		}
 	}
-	cout << "\n" << endl;
-	cout << month << " " << year << " ITOGO " << a << endl;
+	
+}
+
+void Customers::Saldo_3()
+{
+	Saldo_1();
+	Saldo_2();
 }
 
 int main()
 {
-	//int year;
 	string Name;
-	//double a;
 	Customers* A = new Customers[2];
 
 	cout << "Vvedite nazvanie Pokupatela:\n";
 	cin.get();
 	getline(cin, Name);
-	//getline(cin, Client.pokupatel);
+    //getline(cin, Client.pokupatel);
 	//cin >> Client.pokupatel;
 	for (int i = 0; i < 2; i++)
 	{
@@ -117,7 +128,7 @@ int main()
 			cin >> A[i].year;
 			cout << "Write current month" << endl;
 			cin >> A[i].month;
-			A[i].Saldo();
+			A[i].Saldo_3();
 		}
 		else
 		{
@@ -126,7 +137,7 @@ int main()
 			cin >> A[i].year;
 			cout << "Write current month" << endl;
 			cin >> A[i].month;
-			A[i].Saldo();
+			A[i].Saldo_3();
 		}
 
 	}
@@ -134,4 +145,5 @@ int main()
 
 	system("pause");
 }
+
 
